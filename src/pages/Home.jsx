@@ -6,7 +6,7 @@ function Home() {
     <div className="min-h-screen bg-linear-to-br from-orange-100 via-yellow-50 to-rose-100 flex flex-col justify-center items-center text-center px-6 py-12">
       <div className="max-w-3xl">
         <h1 className="text-6xl md:text-7xl font-extrabold text-orange-600 drop-shadow-xl animate-fade-in">
-          Welcome to <span className="text-rose-500">FoodieHub</span> 🍔
+          Welcome to <span className="text-rose-500">FoodieHub</span> 
         </h1>
         <p className="text-lg md:text-xl text-gray-700 mt-4 mb-8 leading-relaxed">
           Order your favorite meals from top-rated restaurants — 
@@ -18,7 +18,7 @@ function Home() {
           to="/menu"
           className="inline-block bg-linear-to-r from-orange-500 to-rose-500 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-300"
         >
-          🍽️ Browse Menu
+           Browse Menu
         </Link>
       </div>
       <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
