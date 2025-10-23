@@ -1,24 +1,25 @@
-import { useCart } from "../context/CartContext";
-
-export default function FoodCard({ food }) {
-  const { addToCart } = useCart();
-
-  return (
-    <div className="bg-white rounded-xl shadow p-4 hover:shadow-lg transition">
-      <img
-        src={food.image}
-        alt={food.name}
-        className="h-40 w-full object-cover rounded-xl"
-      />
-      <h3 className="text-lg font-semibold mt-2">{food.name}</h3>
-      <p className="text-gray-500 text-sm">{food.description}</p>
-      <p className="text-red-500 font-bold mt-2">${food.price}</p>
-      <button
-        onClick={() => addToCart(food)}
-        className="bg-red-500 text-white px-4 py-2 mt-3 rounded hover:bg-red-600 w-full"
-      >
-        Add to Cart
-      </button>
-    </div>
-  );
-}
+function FoodCard({ item, addToCart }) {
+    return (
+      <div className="bg-linear-to-r from-orange-100 to-yellow-100 shadow-lg rounded-xl p-4 hover:scale-105 transition-transform duration-300">
+        <img
+          src={item.image}
+          alt={item.name}
+          className="w-full h-40 object-cover rounded-lg"
+        />
+        <h3 className="mt-3 text-lg font-semibold text-gray-800">{item.name}</h3>
+        <p className="text-gray-600 mt-1">{item.description}</p>
+        <div className="flex justify-between items-center mt-3">
+          <span className="font-bold text-orange-600">${item.price}</span>
+          <button
+            onClick={() => addToCart(item)}
+            className="px-3 py-1 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition"
+          >
+            Add
+          </button>
+        </div>
+      </div>
+    );
+  }
+  
+  export default FoodCard;
+  

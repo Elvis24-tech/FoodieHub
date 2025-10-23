@@ -11,9 +11,8 @@ function App() {
   return (
     <CartProvider>
       <Router>
-        <div className="min-h-screen flex flex-col bg-gray-50">
+        <div className="min-h-screen flex flex-col bg-gray-50 bg-linear-to-b from-yellow-50 to-white">
           <Navbar />
-          {/* replaced flex-grow with grow */}
           <main className="grow">
             <Routes>
               <Route path="/" element={<Home />} />
