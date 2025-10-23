@@ -27,7 +27,7 @@ const Cart = () => {
   return (
     <div className="min-h-screen bg-linear-to-b from-white to-emerald-50 py-12 px-6">
       <h1 className="text-4xl font-bold text-center text-gray-800 mb-10">
-        Your Cart 🛍️
+        Your Cart 
       </h1>
 
       <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-6 sm:p-10">
@@ -64,7 +64,7 @@ const Cart = () => {
         <div className="flex flex-col sm:flex-row justify-between items-center mt-10 pt-6 border-t">
           <h2 className="text-2xl font-semibold text-gray-800">
             Total:{" "}
-            <span className="text-emerald-600">${getTotalPrice()}</span>
+            <span className="text-emerald-600">Ksh{getTotalPrice()}</span>
           </h2>
           <Link
             to="/checkout"

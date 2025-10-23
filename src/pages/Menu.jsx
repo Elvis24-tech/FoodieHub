@@ -6,7 +6,7 @@ const MENU_ITEMS = [
   { id: 2, name: "Pilau", price: 500, category: "Main Dishes", desc: "Swahili spiced rice cooked with tender beef.", image: "https://art.whisk.com/image/upload/fl_progressive,h_630,w_1200,c_fill/v1730768678/recipe/07a2d1c92541184ac16bf4b5eae8d0a0.jpgf" },
   { id: 5, name: "Chicken Stew", price: 750, category: "Main Dishes", desc: "Spicy chicken stew served with rice or ugali.", image: "https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/smoked_paprika_chicken_42159_16x9.jpg" },
   { id: 9, name: "Beef Curry", price: 780, category: "Main Dishes", desc: "Rich, slow-cooked beef curry served with steamed rice.", image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj-RY0T6PY0ssgbi4VWDGb-P7vP6yrNFn3fYf3Ws-CTX2BJKalTt8__DxJV9mzL2uuECEYNE3cPMvEXUeTeeKhkAhzIQArap2NX2QJjZZJUtco96szbl5nwjx8tqLnv8-KVJB17_2NDvpo/s2048/nadan+beef+curry+17.JPG" },
-  { id: 3, name: "Chapati & Beans", price: 350, category: "Vegetarian", desc: "Soft chapatis served with deliciously cooked beans.", image: "https://i.ytimg.com/vi/vIb2CpaW-D8/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDs4xmmnNLwoO9slgNIZn5AAR7GRw" },
+  { id: 3, name: "Chapati & Beans", price: 350, category: "Vegetarian", desc: "Soft chapatis served with deliciously cooked beans.", image: "https://i.ytimg.com/vi/vIb2CpaW-D8/hq720.jpg" },
   { id: 6, name: "Vegetable Salad", price: 300, category: "Vegetarian", desc: "Fresh salad with tomatoes, cucumber, and lettuce.", image: "https://cdn.jwplayer.com/v2/media/wGEqBtuf/thumbnails/qSXwlEH3.jpg?width=1280" },
   { id: 10, name: "Githeri", price: 400, category: "Vegetarian", desc: "Classic Kenyan mix of maize and beans, perfectly seasoned.", image: "https://www.kenyageographic.com/wp-content/uploads/2022/12/spiced-githeri-2.jpg" },
   { id: 4, name: "Fried Fish", price: 900, category: "Seafood", desc: "Deep-fried tilapia served with ugali and greens.", image: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092" },
@@ -26,29 +26,24 @@ const MENU_ITEMS = [
   { id: 22, name: "Beef Soup", price: 450, category: "Soups", desc: "Warm beef broth packed with veggies and flavor.", image: "https://www.allrecipes.com/thmb/iDlx9eEJoU1tf1ocSS6PaiSz7jM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/229071-ground-beef-vegetable-soup-DDMFS-4x3-4b8eb325a60c4d5288ae5112ce92dc8e.jpg" },
 ];
 
-const CATEGORIES = [
-  "All",
-  "Main Dishes",
-  "Vegetarian",
-  "Seafood",
-  "Snacks",
-  "Breakfast",
-  "Soups",
-  "Desserts",
-  "Drinks",
-];
+const CATEGORIES = ["All", "Main Dishes", "Vegetarian", "Seafood", "Snacks", "Breakfast", "Soups", "Desserts", "Drinks"];
 
 export default function Menu() {
   const { addToCart } = useCart();
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [addedItems, setAddedItems] = useState({});
 
   const filteredItems =
     selectedCategory === "All"
       ? MENU_ITEMS
       : MENU_ITEMS.filter((item) => item.category === selectedCategory);
 
-  const handleImageError = (e) => {
-    e.target.src = "https://via.placeholder.com/300x200?text=No+Image";
+  const handleAddToCart = (food) => {
+    addToCart(food);
+    setAddedItems((prev) => ({ ...prev, [food.id]: true }));
+    setTimeout(() => {
+      setAddedItems((prev) => ({ ...prev, [food.id]: false }));
+    }, 2000); // back to "Add to Cart" after 2 seconds
   };
 
   return (
@@ -57,6 +52,7 @@ export default function Menu() {
         🍴 Our Delicious Menu
       </h1>
 
+      {/* Category Buttons */}
       <div className="flex flex-wrap justify-center gap-3 mb-10">
         {CATEGORIES.map((category) => (
           <button
@@ -73,6 +69,7 @@ export default function Menu() {
         ))}
       </div>
 
+      {/* Food Cards */}
       <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {filteredItems.map((food) => (
           <div
@@ -82,7 +79,6 @@ export default function Menu() {
             <img
               src={food.image}
               alt={food.name}
-              onError={handleImageError}
               className="w-full h-48 object-cover"
             />
             <div className="p-5">
@@ -93,22 +89,20 @@ export default function Menu() {
                   Ksh {food.price.toLocaleString()}
                 </span>
                 <button
-                  onClick={() => addToCart(food)}
-                  className="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition"
+                  onClick={() => handleAddToCart(food)}
+                  className={`px-4 py-2 rounded-full font-medium transition ${
+                    addedItems[food.id]
+                      ? "bg-green-500 text-white cursor-default"
+                      : "bg-green-600 text-white hover:bg-green-700"
+                  }`}
                 >
-                  Add to Cart
+                  {addedItems[food.id] ? "Added" : "Add to Cart"}
                 </button>
               </div>
             </div>
           </div>
         ))}
       </div>
-
-      {filteredItems.length === 0 && (
-        <p className="text-center text-gray-600 mt-10">
-          No items available in this category right now.
-        </p>
-      )}
     </div>
   );
 }
