@@ -5,10 +5,9 @@ import { Link } from "react-router-dom";
 const Cart = () => {
   const { cart, removeFromCart, getTotalPrice } = useCart();
 
-  // If cart is empty
   if (!cart || cart.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-emerald-100 flex flex-col items-center justify-center text-center p-6">
+      <div className="min-h-screen bg-linear-to-br from-emerald-50 to-emerald-100 flex flex-col items-center justify-center text-center p-6">
         <h2 className="text-3xl font-semibold text-gray-800 mb-4">
           Your cart is empty 🛒
         </h2>
@@ -26,7 +25,7 @@ const Cart = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-emerald-50 py-12 px-6">
+    <div className="min-h-screen bg-linear-to-b from-white to-emerald-50 py-12 px-6">
       <h1 className="text-4xl font-bold text-center text-gray-800 mb-10">
         Your Cart 🛍️
       </h1>
