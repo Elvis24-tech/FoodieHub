@@ -23,7 +23,7 @@ function Home() {
       </div>
       <div className="mt-16 sm:mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-10 w-full max-w-6xl">
         <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-lg p-4 sm:p-8 border border-orange-200 hover:shadow-3xl hover:-translate-y-2 transition-all duration-500 hover:bg-linear-to-br hover:from-orange-50 hover:to-yellow-50 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-100/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute inset-0 bg-linear-to-br from-orange-100/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
           <div className="flex justify-center mb-4 sm:mb-5">
             <div className="p-4 bg-orange-100 rounded-full shadow-inner">
               <Truck className="text-orange-500 w-10 h-10 sm:w-12 sm:h-12" />
@@ -35,7 +35,7 @@ function Home() {
           </p>
         </div>
         <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-lg p-4 sm:p-8 border border-rose-200 hover:shadow-3xl hover:-translate-y-2 transition-all duration-500 hover:bg-linear-to-br hover:from-rose-50 hover:to-pink-50 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-rose-100/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute inset-0 bg-linear-to-br from-rose-100/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
           <div className="flex justify-center mb-4 sm:mb-5">
             <div className="p-4 bg-rose-100 rounded-full shadow-inner">
               <Utensils className="text-rose-500 w-10 h-10 sm:w-12 sm:h-12" />
@@ -47,7 +47,7 @@ function Home() {
           </p>
         </div>
         <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-lg p-4 sm:p-8 border border-yellow-200 hover:shadow-3xl hover:-translate-y-2 transition-all duration-500 hover:bg-linear-to-br hover:from-yellow-50 hover:to-orange-50 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-yellow-100/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute inset-0 bg-linear-to-br from-yellow-100/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
           <div className="flex justify-center mb-4 sm:mb-5">
             <div className="p-4 bg-yellow-100 rounded-full shadow-inner">
               <ShieldCheck className="text-yellow-500 w-10 h-10 sm:w-12 sm:h-12" />
